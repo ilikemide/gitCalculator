@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="parameter.css">
+</head>
+<body>
+    <div class="calculator">
+        <h1>Calculator</h1>
+        <input type="text" id="expression" readonly placeholder="Enter something to calculator">
+        <div class="buttons">
+            <button onclick="raisetopower(2)">X<sup>2</sup></button>
+            <button onclick="raisetopower(3)">X<sup>3</sup></button>
+            <button onclick="raisetopower(Math.E)">X<sup>y</sup></button>
+            <button onclick="squareroot()">√</button>
+            <button onclick="sin()">SIN</button>
+            <button onclick="cos()">COS</button>
+            <button onclick="tan()">TAN</button>
+            <button onclick="PI()">π</button>
+            <button onclick="appendToExpression('1')">1</button>
+            <button onclick="appendToExpression('2')">2</button>
+            <button onclick="appendToExpression('3')">3</button>
+            <button onclick="appendToExpression('+')">+</button>
+            <button onclick="appendToExpression('4')">4</button>
+            <button onclick="appendToExpression('5')">5</button>
+            <button onclick="appendToExpression('6')">6</button>
+            <button onclick="appendToExpression('-')">-</button>
+            <button onclick="appendToExpression('7')">7</button>
+            <button onclick="appendToExpression('8')">8</button>
+            <button onclick="appendToExpression('9')">9</button>
+            <button onclick="appendToExpression('*')">*</button>
+            <button onclick="appendToExpression('C')">C</button>
+            <button onclick="appendToExpression('0')">0</button>
+            <button onclick="appendToExpression('%')">%</button>
+            <button onclick="appendToExpression('/')">/</button>
+            <div class="del">
+                <button onclick="appendToExpression('Del')">Del</button>
+                <button onclick="calculate()">=</button>
+            </div>
+            <h1 id="result"></h1>
+        </div>
+    </div>
+
+
+
+    <script>
+        function appendToExpression(arg) {
+            let expression = document.getElementById("expression");
+
+            if (arg === 'C') {
+                expression.value = '';
+                document.getElementById("result").innerHTML = '';
+            } else if(arg === 'Del'){
+                expression.value = expression.value.slice(0,-1);
+            } else{
+                expression.value += arg;
+            }
+        }
+
+        
+        function calculate(){
+            let expression = document.getElementById("expression").value;
+            let result = eval(expression);
+            document.getElementById("expression").value = result;
+        }
+        
+        function raisetopower(exponent) {
+            let expression = document.getElementById("expression").value;
+            let result = Math.pow(expression, exponent);
+            document.getElementById("expression").value = result;
+        }
+
+        function squareroot() {
+            let expression = document.getElementById("expression").value;
+            let result = Math.sqrt(expression);
+            document.getElementById("expression").value = result;
+        }
+
+        function sin() {
+            let expression = document.getElementById("expression").value;
+            let result = Math.sin(expression);
+            document.getElementById("expression").value = result;
+        }   
+
+        function cos() {
+            let expression = document.getElementById("expression").value;
+            let result = Math.cos(expression);
+            document.getElementById("expression").value = result;
+        }
+
+        function tan() {
+            let expression = document.getElementById("expression").value;
+            let result = Math.tan(expression);
+            document.getElementById("expression").value = result;
+        }
+
+        function PI() {
+            let result = Math.PI;
+            document.getElementById("expression").value = result;
+        }
+    </script>
+</body>
+</html>
+
+
+
